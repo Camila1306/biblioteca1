@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('biblioteca/');
 });
+
+Route::get('biblioteca/buscar', [BibliotecaController::class,'buscar']);
+
+Route::resource('biblioteca', BibliotecaController::class);
