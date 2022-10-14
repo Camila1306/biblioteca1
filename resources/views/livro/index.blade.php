@@ -13,24 +13,28 @@
     <br>
 
     {{Form::open(['url' => 'biblioteca/buscar', 'method' => 'GET'])}}
-    <div>
-        <a href="{{url('biblioteca/create')}}" class="btn btn-outline-success">Criar</a>
-    </div>
-    <div>
-        @if ($busca !== null)
-        &nbsp;<a href="{{url('biblioteca/')}}" class="btn btn-outline-secondary">Lista</a>&nbsp;
-            
-        @endif
-        {{Form::text('busca', $busca, ['class' => 'form-control', 'required', 'placeholder' => 'buscar'] )}}
-        &nbsp;
-        <span class="input-group-btn">
-            {{Form::submit('Buscar', ['class' => 'btn btn-outline-primary'])}}
-        </span>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="{{url('biblioteca/create')}}" class="btn btn-outline-success">Criar</a>
+        </div>
+        <div class="col-sm-9">
+            <div class="input-group m1-5">
+                @if ($busca !== null)
+                &nbsp;<a href="{{url('biblioteca/')}}" class="btn btn-outline-secondary">Lista</a>&nbsp;
+                    
+                @endif
+                {{Form::text('busca', $busca, ['class' => 'form-control', 'required', 'placeholder' => 'buscar'] )}}
+                &nbsp;
+                <span class="input-group-btn">
+                    {{Form::submit('Buscar', ['class' => 'btn btn-outline-primary'])}}
+                </span>
+            </div>
+        </div>
     </div>
 {{Form::close()}}
 <br> <br>
 <table class="table table-striped table-hover">
-    @foreach ($biblioteca as $livro)
+    @foreach ($livros as $livro)
     <tr>
         <td>
             <a href="{{url('biblioteca/'.$livro->id)}}">{{$livro->titulo}}</a>
